@@ -1,0 +1,132 @@
+.todo-node {
+  width: 240px;
+  min-height: 160px;
+  padding: 16px 16px 14px;
+  border-radius: 18px;
+  background: rgba(10, 12, 18, 0.92);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  color: #f0f4ff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-node-todo {
+  border-color: rgba(255, 209, 102, 0.6);
+  box-shadow: 0 18px 45px rgba(255, 209, 102, 0.18);
+}
+
+.todo-node-doing {
+  border-color: rgba(102, 179, 255, 0.6);
+  box-shadow: 0 18px 45px rgba(102, 179, 255, 0.18);
+}
+
+.todo-node-done {
+  border-color: rgba(125, 226, 165, 0.6);
+  box-shadow: 0 18px 45px rgba(125, 226, 165, 0.2);
+}
+
+.todo-node.is-selected {
+  border-color: rgba(102, 179, 255, 0.65);
+  box-shadow: 0 20px 50px rgba(102, 179, 255, 0.25);
+}
+
+.todo-node-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f0f4ff;
+  width: 100%;
+}
+
+.todo-node-body {
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(240, 244, 255, 0.7);
+  white-space: pre-wrap;
+  width: 100%;
+  min-height: 54px;
+}
+
+.todo-node-body :is(p, ul, ol, blockquote, pre) {
+  margin: 0 0 8px 0;
+}
+
+.todo-node-body :is(ul, ol) {
+  padding-left: 18px;
+}
+
+.todo-node-body code {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 1px 5px;
+  font-size: 12px;
+}
+
+.todo-node-body pre {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 8px 10px;
+  overflow: auto;
+}
+
+.todo-node-status {
+  align-self: flex-start;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.todo-node-status-todo {
+  background: rgba(255, 209, 102, 0.15);
+  border-color: rgba(255, 209, 102, 0.4);
+  color: #ffd166;
+}
+
+.todo-node-status-doing {
+  background: rgba(102, 179, 255, 0.16);
+  border-color: rgba(102, 179, 255, 0.45);
+  color: #66b3ff;
+}
+
+.todo-node-status-done {
+  background: rgba(125, 226, 165, 0.16);
+  border-color: rgba(125, 226, 165, 0.45);
+  color: #7de2a5;
+}
+
+.todo-node-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.todo-node-handle {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.todo-flow-journey:not(.is-edit) .todo-node-handle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.todo-flow-journey:not(.is-edit) .todo-node-delete {
+  opacity: 0;
+  pointer-events: none;
+}

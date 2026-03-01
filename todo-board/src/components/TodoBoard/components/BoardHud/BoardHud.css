@@ -1,0 +1,57 @@
+.todo-gallery-hud {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: min(360px, 90vw);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10;
+}
+
+.todo-hud-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(10, 12, 18, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.todo-hud-section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.todo-gallery-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-gallery-form label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.todo-gallery-form input,
+.todo-gallery-form textarea,
+.todo-gallery-form select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(6, 8, 12, 0.8);
+  color: #f0f4ff;
+  padding: 10px 12px;
+  font-size: 13px;
+  outline: none;
+}
+
+.todo-gallery-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}

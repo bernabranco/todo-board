@@ -1,0 +1,65 @@
+.todo-gallery-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.todo-gallery-feedback {
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.todo-gallery-feedback-success {
+  border-color: rgba(66, 230, 164, 0.45);
+  color: rgba(168, 255, 210, 0.95);
+}
+
+.todo-gallery-feedback-error {
+  border-color: rgba(255, 126, 126, 0.5);
+  color: rgba(255, 187, 187, 0.95);
+}
+
+.todo-gallery-action-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 100px;
+  flex: 1 1 100px;
+}
+
+.todo-gallery-action-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.todo-board-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.todo-board-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.todo-board-actions-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.todo-board-action-spacer {
+  display: block;
+}
+
+.todo-board-file-input {
+  display: none;
+}

@@ -1,0 +1,73 @@
+.todo-gallery-journey {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", system-ui, -apple-system, sans-serif;
+  color: #eef2f7;
+}
+
+.todo-flow-journey .react-flow {
+  background: radial-gradient(circle at top, rgba(28, 32, 50, 0.55), rgba(7, 9, 14, 0.95));
+}
+
+.todo-board-meta {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(10, 12, 18, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  max-width: 320px;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.todo-board-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.todo-board-description {
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.todo-flow-journey .react-flow__renderer {
+  width: 100%;
+  height: 100%;
+}
+
+.todo-flow-minimap {
+  background: rgba(10, 12, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.todo-flow-controls button {
+  background: rgba(10, 12, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.react-flow__handle-left {
+  left: -8px;
+}
+
+.react-flow__handle-right {
+  right: -8px;
+}
+
+.react-flow__handle-top {
+  top: -8px;
+}
+
+.react-flow__handle-bottom {
+  bottom: -8px;
+}
