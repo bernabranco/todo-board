@@ -80,7 +80,8 @@ export default function TodoBoard() {
         onEdgeClick={onEdgeClick}
         onConnect={onConnect}
         onNodeClick={onNodeClick}
-        fitView
+        fitView={true}
+        fitViewOptions={{ padding: 1 }}
       >
         <Background color="#2a334a" gap={28} />
         <MiniMap
