@@ -15,8 +15,8 @@ export const initialNodes: Node<CardData>[] = [
     id: "1",
     position: { x: 0, y: 0 },
     data: {
-      title: "Todo",
-      description: "Add the first steps to your plan.",
+      title: DEFAULT_CARD_TITLE,
+      description: DEFAULT_CARD_DESCRIPTION,
       status: "todo",
     },
     type: "card",
@@ -25,9 +25,9 @@ export const initialNodes: Node<CardData>[] = [
     id: "2",
     position: { x: 300, y: 140 },
     data: {
-      title: "In Progress",
-      description: "Work happening right now.",
-      status: "doing",
+      title: DEFAULT_CARD_TITLE,
+      description: DEFAULT_CARD_DESCRIPTION,
+      status: "todo",
     },
     type: "card",
   },
