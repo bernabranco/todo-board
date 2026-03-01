@@ -23,7 +23,7 @@ type UseBoardGraphReturn = {
   updateNode: (id: string, updates: Partial<CardData>) => void;
   onConnect: (connection: Connection) => void;
   onEdgeClick: (_: React.MouseEvent, edge: Edge) => void;
-  setNodes: ReturnType<typeof useNodesState>[1];
+  setNodes: ReturnType<typeof useNodesState<CardData>>[1];
   setEdges: ReturnType<typeof useEdgesState>[1];
 };
 
