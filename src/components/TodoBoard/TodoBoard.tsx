@@ -116,7 +116,7 @@ export default function TodoBoard() {
         onNodeClick={onNodeClick}
         onPaneClick={clearSelectedCard}
         fitView={true}
-        fitViewOptions={{ padding: 2 }}
+        fitViewOptions={{ padding: 10 }}
       >
         <Background color="#2a334a" gap={28} />
         <MiniMap
