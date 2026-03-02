@@ -6,14 +6,12 @@ import "./SelectedCardModal.css";
 
 type SelectedCardModalProps = {
   selectedNode: Node<CardData> | null;
-  editMode: boolean;
   onUpdateNode: (id: string, updates: Partial<CardData>) => void;
   onClose: () => void;
 };
 
 export function SelectedCardModal({
   selectedNode,
-  editMode,
   onUpdateNode,
   onClose,
 }: SelectedCardModalProps) {
@@ -35,7 +33,6 @@ export function SelectedCardModal({
         <div className="todo-card-modal-body">
           <SelectedCardEditor
             selectedNode={selectedNode}
-            editMode={editMode}
             onUpdateNode={onUpdateNode}
           />
         </div>
