@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import ReactFlow, { Background, MiniMap } from "reactflow";
+import ReactFlow, { Background, MiniMap, MarkerType } from "reactflow";
 import "reactflow/dist/style.css";
 import "./TodoBoard.css";
 
@@ -75,7 +75,19 @@ export default function TodoBoard() {
       </div>
       <ReactFlow
         nodes={nodesWithHandlers}
-        edges={edges}
+        edges={edges.map((edge) => ({
+          ...edge,
+          markerEnd: {
+            type: MarkerType.ArrowClosed,
+            width: 10,
+            height: 10,
+            color: "rgba(255, 255, 255, 0.7)",
+          },
+          style: {
+            stroke: "rgba(255, 255, 255, 0.6)",
+            strokeWidth: 2,
+          },
+        }))}
         nodeTypes={nodeTypes}
         nodesDraggable={editMode}
         nodesConnectable={editMode}
