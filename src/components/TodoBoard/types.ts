@@ -10,6 +10,7 @@ export type CardData = {
 
 export type CardNodeData = CardData & {
   onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
 };
 
 export type BoardSnapshot = {

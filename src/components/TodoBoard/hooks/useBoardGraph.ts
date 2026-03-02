@@ -30,6 +30,7 @@ type UseBoardGraphReturn = {
 // Owns the React Flow graph state and node/edge interactions.
 export function useBoardGraph(
   onDeleteSelected: (deletedId: string) => void,
+  onEditCard: (id: string) => void,
 ): UseBoardGraphReturn {
   const [nodes, setNodes, onNodesChange] = useNodesState<CardData>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -85,9 +86,10 @@ export function useBoardGraph(
         data: {
           ...(node.data as CardData),
           onDelete: deleteCard,
+          onEdit: (id: string) => onEditCard(id),
         },
       })) as Node<CardNodeData>[],
-    [nodes, deleteCard],
+    [nodes, deleteCard, onEditCard],
   );
 
   const onConnect = useCallback(

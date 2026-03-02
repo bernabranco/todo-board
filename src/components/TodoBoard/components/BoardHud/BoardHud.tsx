@@ -1,7 +1,7 @@
 import type { Node } from "reactflow";
 import type { BoardSnapshot, CardData } from "../../types";
 import { BoardControlsCard } from "../BoardControlsCard/BoardControlsCard";
-import { SelectedCardControlsCard } from "../SelectedCardControlsCard/SelectedCardControlsCard";
+import { SelectedCardModal } from "../SelectedCardModal/SelectedCardModal";
 import "./BoardHud.css";
 
 type BoardHudProps = {
@@ -27,6 +27,8 @@ type BoardHudProps = {
   onBoardDescriptionChange: (value: string) => void;
   onSelectBoardId: (value: string) => void;
   onUpdateNode: (id: string, updates: Partial<CardData>) => void;
+  isEditModalOpen: boolean;
+  onCloseEditModal: () => void;
 };
 
 export function BoardHud({
@@ -48,6 +50,8 @@ export function BoardHud({
   onBoardDescriptionChange,
   onSelectBoardId,
   onUpdateNode,
+  isEditModalOpen,
+  onCloseEditModal,
 }: BoardHudProps) {
   return (
     <div className="todo-gallery-hud">
@@ -69,11 +73,14 @@ export function BoardHud({
         onToggleEditMode={onToggleEditMode}
         editMode={editMode}
       />
-      <SelectedCardControlsCard
-        selectedNode={selectedNode}
-        editMode={editMode}
-        onUpdateNode={onUpdateNode}
-      />
+      {isEditModalOpen && (
+        <SelectedCardModal
+          selectedNode={selectedNode}
+          editMode={editMode}
+          onUpdateNode={onUpdateNode}
+          onClose={onCloseEditModal}
+        />
+      )}
     </div>
   );
 }

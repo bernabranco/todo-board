@@ -33,6 +33,8 @@ export default function TodoBoard() {
     selectBoard,
     setBoardTitle,
     setBoardDescription,
+    isEditModalOpen,
+    closeEditModal,
     onConnect,
     onEdgeClick,
     onNodeClick,
@@ -67,6 +69,8 @@ export default function TodoBoard() {
         onBoardDescriptionChange={setBoardDescription}
         onSelectBoardId={selectBoard}
         onUpdateNode={updateNode}
+        isEditModalOpen={isEditModalOpen}
+        onCloseEditModal={closeEditModal}
       />
       <TutorialHint />
       <ReactFlow
