@@ -85,7 +85,7 @@ export default function TodoBoard() {
         onConnect={onConnect}
         onNodeClick={onNodeClick}
         fitView={true}
-        fitViewOptions={{ padding: 1 }}
+        fitViewOptions={{ padding: 2 }}
       >
         <Background color="#2a334a" gap={28} />
         <MiniMap
