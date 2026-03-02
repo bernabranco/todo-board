@@ -7,10 +7,13 @@ import { BoardHud } from "./components/BoardHud/BoardHud";
 import { CardNode } from "./components/CardNode/CardNode";
 import { SelectedCardControlsCard } from "./components/SelectedCardControlsCard/SelectedCardControlsCard";
 import { useTodoBoardState } from "./hooks/useTodoBoardState";
+import { useBoardProgress } from "./hooks/useBoardProgress";
+import { ProgressBar } from "../ui/ProgressBar";
 
 export default function TodoBoard() {
   const nodeTypes = useMemo(() => ({ card: CardNode }), []);
   const {
+    nodes,
     nodesWithHandlers,
     edges,
     selectedNode,
@@ -43,6 +46,8 @@ export default function TodoBoard() {
     onNodeClick,
   } = useTodoBoardState();
 
+  const progress = useBoardProgress(nodes);
+
   return (
     <div
       className={`todo-gallery-journey todo-flow-journey ${editMode ? "is-edit" : ""}`}
@@ -52,6 +57,11 @@ export default function TodoBoard() {
         {boardDescription ? (
           <div className="todo-board-description">{boardDescription}</div>
         ) : null}
+        <ProgressBar
+          total={progress.total}
+          done={progress.done}
+          percent={progress.percent}
+        />
       </div>
       <BoardHud
         boardTitle={boardTitle}
