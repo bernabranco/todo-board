@@ -34,6 +34,10 @@ export default function TodoBoard() {
     setBoardTitle,
     setBoardDescription,
     clearSelectedCard,
+    boardControlsCollapsed,
+    toggleBoardControls,
+    selectedCardCollapsed,
+    toggleSelectedCard,
     onConnect,
     onEdgeClick,
     onNodeClick,
@@ -66,12 +70,16 @@ export default function TodoBoard() {
         onBoardTitleChange={setBoardTitle}
         onBoardDescriptionChange={setBoardDescription}
         onSelectBoardId={selectBoard}
+        collapsed={boardControlsCollapsed}
+        onToggleCollapse={toggleBoardControls}
       />
       <div className="todo-selected-card-panel">
         <SelectedCardControlsCard
           selectedNode={selectedNode}
           editMode={editMode}
           onUpdateNode={updateNode}
+          collapsed={selectedCardCollapsed}
+          onToggleCollapse={toggleSelectedCard}
         />
       </div>
       <ReactFlow

@@ -1,5 +1,6 @@
 import type { Node } from "reactflow";
 import type { CardData, CardStatus } from "../../types";
+import { SelectField } from "../../../ui/SelectField";
 import "./SelectedCardEditor.css";
 
 type SelectedCardEditorProps = {
@@ -46,7 +47,7 @@ export function SelectedCardEditor({
       </label>
       <label>
         Status
-        <select
+        <SelectField
           value={data.status}
           onChange={(event) =>
             onUpdateNode(selectedNode.id, {
@@ -58,7 +59,7 @@ export function SelectedCardEditor({
           <option value="todo">Todo</option>
           <option value="doing">In Progress</option>
           <option value="done">Done</option>
-        </select>
+        </SelectField>
       </label>
     </div>
   );

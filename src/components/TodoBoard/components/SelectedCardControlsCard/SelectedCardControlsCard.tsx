@@ -1,35 +1,43 @@
 import type { Node } from "reactflow";
 import type { CardData } from "../../types";
 import { SelectedCardEditor } from "../SelectedCardEditor/SelectedCardEditor";
+import { CollapsibleCard } from "../../../ui/CollapsibleCard";
 import styles from "./SelectedCardControlsCard.module.css";
 
 type SelectedCardControlsCardProps = {
   selectedNode: Node<CardData> | null;
   editMode: boolean;
   onUpdateNode: (id: string, updates: Partial<CardData>) => void;
+  collapsed: boolean;
+  onToggleCollapse: () => void;
 };
 
 export function SelectedCardControlsCard({
   selectedNode,
   editMode,
   onUpdateNode,
+  collapsed,
+  onToggleCollapse,
 }: SelectedCardControlsCardProps) {
-  const isCollapsed = !selectedNode;
+  if(!selectedNode) {
+    return null;
+  }
 
   return (
-    !isCollapsed && (
-      <div
-        className={`${styles.section} ${isCollapsed ? styles.collapsed : ""}`}
-      >
-        <div className={styles.header}>
-          <div className={styles.sectionTitle}>Selected Card</div>
-        </div>
+    <CollapsibleCard
+      title="Selected Card"
+      collapsed={collapsed}
+      onToggleCollapse={onToggleCollapse}
+    >
+      {!collapsed && selectedNode ? (
         <SelectedCardEditor
           selectedNode={selectedNode}
           editMode={editMode}
           onUpdateNode={onUpdateNode}
         />
-      </div>
-    )
+      ) : (
+        <div className={styles.empty}>Select a card to edit its details.</div>
+      )}
+    </CollapsibleCard>
   );
 }

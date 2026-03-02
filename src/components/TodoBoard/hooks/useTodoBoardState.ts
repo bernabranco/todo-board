@@ -37,6 +37,10 @@ type UseTodoBoardStateReturn = {
   setBoardTitle: (value: string) => void;
   setBoardDescription: (value: string) => void;
   clearSelectedCard: () => void;
+  boardControlsCollapsed: boolean;
+  toggleBoardControls: () => void;
+  selectedCardCollapsed: boolean;
+  toggleSelectedCard: () => void;
   onConnect: (connection: Connection) => void;
   onEdgeClick: (_: React.MouseEvent, edge: Edge) => void;
   onNodeClick: (_: React.MouseEvent, node: { id: string }) => void;
@@ -51,12 +55,20 @@ export function useTodoBoardState(): UseTodoBoardStateReturn {
   );
   const [boardId, setBoardId] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [boardControlsCollapsed, setBoardControlsCollapsed] = useState(false);
+  const [selectedCardCollapsed, setSelectedCardCollapsed] = useState(false);
 
   const selectCard = useCallback((id: string) => {
     setSelectedId(id);
   }, []);
   const clearSelectedCard = useCallback(() => {
     setSelectedId(null);
+  }, []);
+  const toggleBoardControls = useCallback(() => {
+    setBoardControlsCollapsed((prev) => !prev);
+  }, []);
+  const toggleSelectedCard = useCallback(() => {
+    setSelectedCardCollapsed((prev) => !prev);
   }, []);
 
   const { nodes, edges, nodesWithHandlers, onNodesChange, onEdgesChange, addCard, updateNode, onConnect, onEdgeClick, setNodes, setEdges } =
@@ -136,6 +148,10 @@ export function useTodoBoardState(): UseTodoBoardStateReturn {
     setBoardTitle,
     setBoardDescription,
     clearSelectedCard,
+    boardControlsCollapsed,
+    toggleBoardControls,
+    selectedCardCollapsed,
+    toggleSelectedCard,
     onConnect,
     onEdgeClick,
     onNodeClick,

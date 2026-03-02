@@ -23,6 +23,8 @@ type BoardHudProps = {
   onBoardTitleChange: (value: string) => void;
   onBoardDescriptionChange: (value: string) => void;
   onSelectBoardId: (value: string) => void;
+  collapsed: boolean;
+  onToggleCollapse: () => void;
 };
 
 export function BoardHud({
@@ -42,6 +44,8 @@ export function BoardHud({
   onBoardTitleChange,
   onBoardDescriptionChange,
   onSelectBoardId,
+  collapsed,
+  onToggleCollapse,
 }: BoardHudProps) {
   return (
     <div className="todo-gallery-hud">
@@ -62,6 +66,8 @@ export function BoardHud({
         onAddCard={onAddCard}
         onToggleEditMode={onToggleEditMode}
         editMode={editMode}
+        collapsed={collapsed}
+        onToggleCollapse={onToggleCollapse}
       />
     </div>
   );

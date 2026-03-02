@@ -1,0 +1,26 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  appearance: none;
+  padding-right: 34px;
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  display: block;
+  fill: currentColor;
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+.select:disabled + .icon {
+  opacity: 0.5;
+}
