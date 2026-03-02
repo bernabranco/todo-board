@@ -60,6 +60,7 @@ export function useTodoBoardState(): UseTodoBoardStateReturn {
 
   const selectCard = useCallback((id: string) => {
     setSelectedId(id);
+    setSelectedCardCollapsed(false);
   }, []);
   const clearSelectedCard = useCallback(() => {
     setSelectedId(null);

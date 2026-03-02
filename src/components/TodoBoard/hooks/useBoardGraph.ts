@@ -87,6 +87,7 @@ export function useBoardGraph(
           ...(node.data as CardData),
           onDelete: deleteCard,
           onEdit: (id: string) => onEditCard(id),
+          onSelect: (id: string) => onEditCard(id),
         },
       })) as Node<CardNodeData>[],
     [nodes, deleteCard, onEditCard],

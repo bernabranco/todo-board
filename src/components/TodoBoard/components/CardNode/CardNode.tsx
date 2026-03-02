@@ -14,6 +14,7 @@ const statusLabel: Record<CardNodeData["status"], string> = {
 export function CardNode({ id, data, selected }: NodeProps<CardNodeData>) {
   return (
     <div
+      onClick={() => data.onSelect(id)}
       className={[
         styles.node,
         data.status === "todo"
