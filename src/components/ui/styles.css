@@ -1,11 +1,17 @@
 .ui-button {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  --btn-bg: linear-gradient(135deg, #20283c, #141a28);
+  --btn-bg-hover: linear-gradient(135deg, #2a334a, #1a2234);
+  --btn-border: rgba(255, 255, 255, 0.14);
+  --btn-fg: #eef3ff;
+  border: 1px solid var(--btn-border);
   border-radius: 999px;
   padding: 8px 14px;
   font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  background: #1d2434;
-  color: #e8edf7;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -14,7 +20,7 @@
 }
 
 .ui-button:hover {
-  background: #2a334a;
+  background: var(--btn-bg-hover);
 }
 
 .ui-button:active {
@@ -26,51 +32,38 @@
   cursor: not-allowed;
 }
 
-.ui-button-full {
+.ui-button[data-full="true"] {
   width: 100%;
 }
 
-.ui-button-size-default {
+.ui-button[data-size="default"] {
   min-height: 32px;
 }
 
-.ui-button-size-icon {
+.ui-button[data-size="icon"] {
   width: 26px;
   height: 26px;
   padding: 0;
   border-radius: 999px;
 }
 
-.ui-button-default {
-  background: #1d2434;
+.ui-button[data-variant="green"] {
+  --btn-bg: linear-gradient(135deg, #1b7a4b, #2bb56f);
+  --btn-bg-hover: linear-gradient(135deg, #239156, #35c878);
+  --btn-border: rgba(43, 181, 111, 0.6);
+  --btn-fg: #f0fff7;
 }
 
-.ui-button-green {
-  background: linear-gradient(135deg, #1f7a4a, #2aa865);
-  border-color: rgba(42, 168, 101, 0.6);
-  color: #f0fff7;
+.ui-button[data-variant="blue"] {
+  --btn-bg: linear-gradient(135deg, #2a5ea6, #3d7ce0);
+  --btn-bg-hover: linear-gradient(135deg, #2f6ab7, #4a90f0);
+  --btn-border: rgba(59, 127, 214, 0.6);
+  --btn-fg: #f3f7ff;
 }
 
-.ui-button-green:hover {
-  background: linear-gradient(135deg, #239255, #35c776);
-}
-
-.ui-button-blue {
-  background: linear-gradient(135deg, #2b5c9b, #3b7fd6);
-  border-color: rgba(59, 127, 214, 0.6);
-  color: #f3f7ff;
-}
-
-.ui-button-blue:hover {
-  background: linear-gradient(135deg, #2f6ab1, #4a90f0);
-}
-
-.ui-button-gray {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.16);
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.ui-button-gray:hover {
-  background: rgba(255, 255, 255, 0.14);
+.ui-button[data-variant="gray"] {
+  --btn-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  --btn-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+  --btn-border: rgba(255, 255, 255, 0.18);
+  --btn-fg: rgba(255, 255, 255, 0.85);
 }
