@@ -36,6 +36,7 @@ type UseTodoBoardStateReturn = {
   selectBoard: (id: string) => void;
   setBoardTitle: (value: string) => void;
   setBoardDescription: (value: string) => void;
+  clearSelectedCard: () => void;
   onConnect: (connection: Connection) => void;
   onEdgeClick: (_: React.MouseEvent, edge: Edge) => void;
   onNodeClick: (_: React.MouseEvent, node: { id: string }) => void;
@@ -53,6 +54,9 @@ export function useTodoBoardState(): UseTodoBoardStateReturn {
 
   const selectCard = useCallback((id: string) => {
     setSelectedId(id);
+  }, []);
+  const clearSelectedCard = useCallback(() => {
+    setSelectedId(null);
   }, []);
 
   const { nodes, edges, nodesWithHandlers, onNodesChange, onEdgesChange, addCard, updateNode, onConnect, onEdgeClick, setNodes, setEdges } =
@@ -92,7 +96,9 @@ export function useTodoBoardState(): UseTodoBoardStateReturn {
     setSelectedId,
   });
 
-  const toggleEditMode = useCallback(() => setEditMode((prev) => !prev), []);
+  const toggleEditMode = useCallback(() => {
+    setEditMode((prev) => !prev);
+  }, []);
 
   const createNewBoard = useCallback(() => {
     setBoardId(null);
@@ -129,6 +135,7 @@ export function useTodoBoardState(): UseTodoBoardStateReturn {
     selectBoard,
     setBoardTitle,
     setBoardDescription,
+    clearSelectedCard,
     onConnect,
     onEdgeClick,
     onNodeClick,

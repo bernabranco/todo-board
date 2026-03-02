@@ -33,6 +33,7 @@ export default function TodoBoard() {
     selectBoard,
     setBoardTitle,
     setBoardDescription,
+    clearSelectedCard,
     onConnect,
     onEdgeClick,
     onNodeClick,
@@ -75,8 +76,8 @@ export default function TodoBoard() {
       </div>
       <ReactFlow
         nodes={nodesWithHandlers}
-        edges={edges.map((edge) => ({
-          ...edge,
+        edges={edges}
+        defaultEdgeOptions={{
           markerEnd: {
             type: MarkerType.ArrowClosed,
             width: 10,
@@ -87,7 +88,7 @@ export default function TodoBoard() {
             stroke: "rgba(255, 255, 255, 0.6)",
             strokeWidth: 2,
           },
-        }))}
+        }}
         nodeTypes={nodeTypes}
         nodesDraggable={editMode}
         nodesConnectable={editMode}
@@ -96,6 +97,7 @@ export default function TodoBoard() {
         onEdgeClick={onEdgeClick}
         onConnect={onConnect}
         onNodeClick={onNodeClick}
+        onPaneClick={clearSelectedCard}
         fitView={true}
         fitViewOptions={{ padding: 2 }}
       >
