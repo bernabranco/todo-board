@@ -49,7 +49,15 @@ export function useBoardPersistence({
     setBoardId(id);
     setSelectedBoardId(id);
     persistBoard(snapshot);
-  }, [boardId, boardTitle, nodes, edges, persistBoard, setBoardId]);
+  }, [
+    boardId,
+    boardTitle,
+    boardDescription,
+    nodes,
+    edges,
+    persistBoard,
+    setBoardId,
+  ]);
 
   const selectBoard = useCallback(
     (id: string) => {
