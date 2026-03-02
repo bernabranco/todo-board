@@ -6,7 +6,6 @@ import styles from "./SelectedCardControlsCard.module.css";
 
 type SelectedCardControlsCardProps = {
   selectedNode: Node<CardData> | null;
-  editMode: boolean;
   onUpdateNode: (id: string, updates: Partial<CardData>) => void;
   collapsed: boolean;
   onToggleCollapse: () => void;
@@ -14,7 +13,6 @@ type SelectedCardControlsCardProps = {
 
 export function SelectedCardControlsCard({
   selectedNode,
-  editMode,
   onUpdateNode,
   collapsed,
   onToggleCollapse,
@@ -32,7 +30,6 @@ export function SelectedCardControlsCard({
       {!collapsed && selectedNode ? (
         <SelectedCardEditor
           selectedNode={selectedNode}
-          editMode={editMode}
           onUpdateNode={onUpdateNode}
         />
       ) : (

@@ -86,7 +86,6 @@ export default function TodoBoard() {
       <div className="todo-selected-card-panel">
         <SelectedCardControlsCard
           selectedNode={selectedNode}
-          editMode={editMode}
           onUpdateNode={updateNode}
           collapsed={selectedCardCollapsed}
           onToggleCollapse={toggleSelectedCard}

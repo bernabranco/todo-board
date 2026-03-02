@@ -5,14 +5,12 @@ import "./SelectedCardEditor.css";
 
 type SelectedCardEditorProps = {
   selectedNode: Node<CardData> | null;
-  editMode: boolean;
   onUpdateNode: (id: string, updates: Partial<CardData>) => void;
 };
 
 // Inline editor for the currently selected card.
 export function SelectedCardEditor({
   selectedNode,
-  editMode,
   onUpdateNode,
 }: SelectedCardEditorProps) {
   if (!selectedNode) {
@@ -32,7 +30,6 @@ export function SelectedCardEditor({
           onChange={(event) =>
             onUpdateNode(selectedNode.id, { title: event.target.value })
           }
-          disabled={!editMode}
         />
       </label>
       <label>
@@ -42,7 +39,6 @@ export function SelectedCardEditor({
           onChange={(event) =>
             onUpdateNode(selectedNode.id, { description: event.target.value })
           }
-          disabled={!editMode}
         />
       </label>
       <label>
@@ -54,7 +50,6 @@ export function SelectedCardEditor({
               status: event.target.value as CardStatus,
             })
           }
-          disabled={!editMode}
         >
           <option value="todo">Todo</option>
           <option value="doing">In Progress</option>
