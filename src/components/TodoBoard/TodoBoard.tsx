@@ -1,11 +1,11 @@
 import { useMemo } from "react";
-import ReactFlow, { Background, Controls, MiniMap } from "reactflow";
+import ReactFlow, { Background, MiniMap } from "reactflow";
 import "reactflow/dist/style.css";
 import "./TodoBoard.css";
 
 import { BoardHud } from "./components/BoardHud/BoardHud";
 import { CardNode } from "./components/CardNode/CardNode";
-import { TutorialHint } from "./components/TutorialHint/TutorialHint";
+import { SelectedCardControlsCard } from "./components/SelectedCardControlsCard/SelectedCardControlsCard";
 import { useTodoBoardState } from "./hooks/useTodoBoardState";
 
 export default function TodoBoard() {
@@ -33,8 +33,6 @@ export default function TodoBoard() {
     selectBoard,
     setBoardTitle,
     setBoardDescription,
-    isEditModalOpen,
-    closeEditModal,
     onConnect,
     onEdgeClick,
     onNodeClick,
@@ -56,7 +54,6 @@ export default function TodoBoard() {
         editMode={editMode}
         savedBoards={savedBoards}
         selectedBoardId={selectedBoardId}
-        selectedNode={selectedNode}
         saveFeedback={saveFeedback}
         onAddCard={addCard}
         onToggleEditMode={toggleEditMode}
@@ -68,11 +65,14 @@ export default function TodoBoard() {
         onBoardTitleChange={setBoardTitle}
         onBoardDescriptionChange={setBoardDescription}
         onSelectBoardId={selectBoard}
-        onUpdateNode={updateNode}
-        isEditModalOpen={isEditModalOpen}
-        onCloseEditModal={closeEditModal}
       />
-      <TutorialHint />
+      <div className="todo-selected-card-panel">
+        <SelectedCardControlsCard
+          selectedNode={selectedNode}
+          editMode={editMode}
+          onUpdateNode={updateNode}
+        />
+      </div>
       <ReactFlow
         nodes={nodesWithHandlers}
         edges={edges}
@@ -102,7 +102,6 @@ export default function TodoBoard() {
           nodeStrokeColor="#0b0f18"
           maskColor="rgba(6, 8, 12, 0.7)"
         />
-        <Controls className="todo-flow-controls" />
       </ReactFlow>
     </div>
   );

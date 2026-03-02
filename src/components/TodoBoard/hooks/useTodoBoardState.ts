@@ -36,9 +36,6 @@ type UseTodoBoardStateReturn = {
   selectBoard: (id: string) => void;
   setBoardTitle: (value: string) => void;
   setBoardDescription: (value: string) => void;
-  isEditModalOpen: boolean;
-  openEditModal: (id: string) => void;
-  closeEditModal: () => void;
   onConnect: (connection: Connection) => void;
   onEdgeClick: (_: React.MouseEvent, edge: Edge) => void;
   onNodeClick: (_: React.MouseEvent, node: { id: string }) => void;
@@ -53,21 +50,17 @@ export function useTodoBoardState(): UseTodoBoardStateReturn {
   );
   const [boardId, setBoardId] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const openEditModal = useCallback((id: string) => {
+  const selectCard = useCallback((id: string) => {
     setSelectedId(id);
-    setIsEditModalOpen(true);
   }, []);
-
-  const closeEditModal = useCallback(() => setIsEditModalOpen(false), []);
 
   const { nodes, edges, nodesWithHandlers, onNodesChange, onEdgesChange, addCard, updateNode, onConnect, onEdgeClick, setNodes, setEdges } =
     useBoardGraph(
       (deletedId) => {
         setSelectedId((prev) => (prev === deletedId ? null : prev));
       },
-      openEditModal,
+      selectCard,
     );
 
   const { selectedNode, onNodeClick } = useBoardSelection(
@@ -136,9 +129,6 @@ export function useTodoBoardState(): UseTodoBoardStateReturn {
     selectBoard,
     setBoardTitle,
     setBoardDescription,
-    isEditModalOpen,
-    openEditModal,
-    closeEditModal,
     onConnect,
     onEdgeClick,
     onNodeClick,

@@ -1,7 +1,5 @@
-import type { Node } from "reactflow";
-import type { BoardSnapshot, CardData } from "../../types";
+import type { BoardSnapshot } from "../../types";
 import { BoardControlsCard } from "../BoardControlsCard/BoardControlsCard";
-import { SelectedCardModal } from "../SelectedCardModal/SelectedCardModal";
 import "./BoardHud.css";
 
 type BoardHudProps = {
@@ -10,7 +8,6 @@ type BoardHudProps = {
   editMode: boolean;
   savedBoards: BoardSnapshot[];
   selectedBoardId: string;
-  selectedNode: Node<CardData> | null;
   saveFeedback: {
     type: "success" | "error";
     message: string;
@@ -26,9 +23,6 @@ type BoardHudProps = {
   onBoardTitleChange: (value: string) => void;
   onBoardDescriptionChange: (value: string) => void;
   onSelectBoardId: (value: string) => void;
-  onUpdateNode: (id: string, updates: Partial<CardData>) => void;
-  isEditModalOpen: boolean;
-  onCloseEditModal: () => void;
 };
 
 export function BoardHud({
@@ -37,7 +31,6 @@ export function BoardHud({
   editMode,
   savedBoards,
   selectedBoardId,
-  selectedNode,
   saveFeedback,
   onAddCard,
   onToggleEditMode,
@@ -49,9 +42,6 @@ export function BoardHud({
   onBoardTitleChange,
   onBoardDescriptionChange,
   onSelectBoardId,
-  onUpdateNode,
-  isEditModalOpen,
-  onCloseEditModal,
 }: BoardHudProps) {
   return (
     <div className="todo-gallery-hud">
@@ -73,14 +63,6 @@ export function BoardHud({
         onToggleEditMode={onToggleEditMode}
         editMode={editMode}
       />
-      {isEditModalOpen && (
-        <SelectedCardModal
-          selectedNode={selectedNode}
-          editMode={editMode}
-          onUpdateNode={onUpdateNode}
-          onClose={onCloseEditModal}
-        />
-      )}
     </div>
   );
 }

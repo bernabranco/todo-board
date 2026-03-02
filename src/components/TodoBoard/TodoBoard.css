@@ -41,6 +41,14 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+.todo-selected-card-panel {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: min(360px, 90vw);
+  z-index: 10;
+}
+
 .todo-flow-journey .react-flow__renderer {
   width: 100%;
   height: 100%;
