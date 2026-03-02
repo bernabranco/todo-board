@@ -1,5 +1,10 @@
-import { useMemo } from "react";
-import ReactFlow, { Background, MiniMap, MarkerType } from "reactflow";
+import { useEffect, useMemo, useRef } from "react";
+import ReactFlow, {
+  Background,
+  MiniMap,
+  MarkerType,
+  type ReactFlowInstance,
+} from "reactflow";
 import "reactflow/dist/style.css";
 import "./TodoBoard.css";
 
@@ -11,6 +16,7 @@ import { useBoardProgress } from "./hooks/useBoardProgress";
 import { ProgressBar } from "../ui/ProgressBar";
 
 export default function TodoBoard() {
+  const flowRef = useRef<ReactFlowInstance | null>(null);
   const nodeTypes = useMemo(() => ({ card: CardNode }), []);
   const {
     nodes,
@@ -47,6 +53,13 @@ export default function TodoBoard() {
   } = useTodoBoardState();
 
   const progress = useBoardProgress(nodes);
+
+  useEffect(() => {
+    if (!flowRef.current) return;
+    requestAnimationFrame(() => {
+      flowRef.current?.fitView({ padding: 1, duration: 250 });
+    });
+  }, [selectedBoardId, nodes.length]);
 
   return (
     <div
@@ -115,8 +128,11 @@ export default function TodoBoard() {
         onConnect={onConnect}
         onNodeClick={onNodeClick}
         onPaneClick={clearSelectedCard}
+        onInit={(instance) => {
+          flowRef.current = instance;
+        }}
         fitView={true}
-        fitViewOptions={{ padding: 10 }}
+        fitViewOptions={{ padding: 4 }}
       >
         <Background color="#2a334a" gap={28} />
         <MiniMap
